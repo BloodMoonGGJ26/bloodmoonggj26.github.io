@@ -7,19 +7,20 @@
 
     --night1: #0c0727;
     --night2: #2c1c82;
-    /* TODO: --night25 */
     --night3: #6d58e1;
-    /* TODO: --night35 */
     --night4: #d4cbff; /* The moon */
+    --nightmix23: color-mix(in srgb, var(--night2),var(--night3));
+    --nightmix34: color-mix(in srgb, var(--night3),var(--night4));
 
     --day1: #491d14;
     --day2: #8f3b1d;
-    /* TODO: --day25 */
     --day3: #cb8232;
-    /* TODO: --day35 */
     --day4: #ffde67;  /* The sun */
+    --daymix23: color-mix(in srgb, var(--day2),var(--day3));
+    --daymix34: color-mix(in srgb, var(--day3),var(--day4));
 
-    /* TODO: shadow colors */
+    /* shadow colors */
+    --shadow: #222222;
 }
 
 
@@ -35,12 +36,31 @@ a {
 }
 a[href]:link {
     color: light-dark( var(--day3), var(--night3) );
+    transition: color 0.3s ease-in-out;
 }
 a[href]:visited {
     /* TODO: Add a color that is somewhere between colors 2 and 3 */
+    color: color-mix(in srgb, var(--daymix23), var(--nightmix23));
+    /*
+    color: color-mix(
+        in srgb, 
+        light-dark( var(--day2), var(--night2) ), 
+        light-dark( var(--day3), var(--night3) )
+    );
+    */
+    transition: color 0.3s ease-in-out;
 }
 a[href]:active {
     /* TODO: Add a color that is somewhere between colors 3 and 4 */
+    color: color-mix(in srgb, var(--daymix34), var(--nightmix34));
+    /*
+    color: color-mix(
+        in srgb, 
+        light-dark( var(--day3), var(--night3) ), 
+        light-dark( var(--day4), var(--night4) )
+    );
+    */
+    transition: color 0.3s ease-in-out;
 }
 a[href]:hover {
     color: light-dark( var(--day4), var(--night4) );
@@ -66,6 +86,7 @@ figure {
     border-color: light-dark( var(--day3), var(--night3) );
     border-radius: 15px;
     padding: 5px;
+    box-shadow: 5px 5px 5px var(--shadow);
 }
 
 figure > img {
