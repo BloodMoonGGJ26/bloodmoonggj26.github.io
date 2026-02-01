@@ -1,0 +1,95 @@
+/**
+ * File: styles.css
+ * Color palette based on Equinox 8 (https://lospec.com/palette-list/equinox-8)
+ */
+:root {
+    color-scheme: light dark;
+
+    --night1: #0c0727;
+    --night2: #2c1c82;
+    /* TODO: --night25 */
+    --night3: #6d58e1;
+    /* TODO: --night35 */
+    --night4: #d4cbff; /* The moon */
+
+    --day1: #491d14;
+    --day2: #8f3b1d;
+    /* TODO: --day25 */
+    --day3: #cb8232;
+    /* TODO: --day35 */
+    --day4: #ffde67;  /* The sun */
+
+    /* TODO: shadow colors */
+}
+
+
+body {
+    background-color: light-dark( var(--day1), var(--night1) );
+    color: light-dark( var(--day2), var(--night2) );
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: light-dark( var(--day2), var(--night2) );
+    text-decoration: none;
+}
+a[href]:link {
+    color: light-dark( var(--day3), var(--night3) );
+}
+a[href]:visited {
+    /* TODO: Add a color that is somewhere between colors 2 and 3 */
+}
+a[href]:active {
+    /* TODO: Add a color that is somewhere between colors 3 and 4 */
+}
+a[href]:hover {
+    color: light-dark( var(--day4), var(--night4) );
+}
+
+h1, h1 > a[id] {
+    color: light-dark( var(--day3), var(--night3) );
+}
+h2, h2 > a[id] {
+    color: light-dark( var(--day3), var(--night3) );
+}
+h3, h3 > a[id] {
+    color: light-dark( var(--day3), var(--night3) );
+}
+
+hr {
+    border-color: light-dark( var(--day3), var(--night3) );
+}
+
+figure {
+    border-width: 1px;
+    border-style: outset;
+    border-color: light-dark( var(--day3), var(--night3) );
+    border-radius: 15px;
+    padding: 5px;
+}
+
+figure > img {
+    border-width: 1px;
+    border-style: inset;
+    border-color: light-dark( var(--day3), var(--night3) );
+    border-radius: 15px;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+figure > figcaption {
+    margin: 3px;
+    text-align: center;
+    color: light-dark( var(--day3), var(--night3) );
+    
+}
+
+.sidebyside {
+    display: flex;
+}
+
+.sidepara {
+    min-width: 400px;
+}
+
+/* TODO: Transition colors between link and hover with animation */
