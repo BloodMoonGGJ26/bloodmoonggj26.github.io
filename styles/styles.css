@@ -23,11 +23,30 @@
     --shadow: #222222;
 }
 
-
+/*
 body {
     background-color: light-dark( var(--day1), var(--night1) );
     color: light-dark( var(--day2), var(--night2) );
     font-family: Arial, Helvetica, sans-serif;
+}
+*/
+
+/* Light mode first */
+body {
+    background-color: var(--day1);
+    color: var(--day2);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* then dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--night1);
+        color: var(--night2);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
 }
 
 a {
@@ -39,8 +58,7 @@ a[href]:link {
     transition: color 0.3s ease-in-out;
 }
 a[href]:visited {
-    /* TODO: Add a color that is somewhere between colors 2 and 3 */
-    color: color-mix(in srgb, var(--daymix23), var(--nightmix23));
+    color: var(--daymix23);
     /*
     color: color-mix(
         in srgb, 
@@ -51,8 +69,7 @@ a[href]:visited {
     transition: color 0.3s ease-in-out;
 }
 a[href]:active {
-    /* TODO: Add a color that is somewhere between colors 3 and 4 */
-    color: color-mix(in srgb, var(--daymix34), var(--nightmix34));
+    color: var(--daymix34);
     /*
     color: color-mix(
         in srgb, 
@@ -63,27 +80,74 @@ a[href]:active {
     transition: color 0.3s ease-in-out;
 }
 a[href]:hover {
-    color: light-dark( var(--day4), var(--night4) );
+    color: var(--day4);
+}
+
+@media (prefers-color-scheme: dark) {
+
+    a {
+        color: var(--night2);
+        text-decoration: none;
+    }
+    a[href]:link {
+        color: var(--night3);
+        transition: color 0.3s ease-in-out;
+    }
+    a[href]:visited {
+        color: var(--nightmix23);
+        transition: color 0.3s ease-in-out;
+    }
+    a[href]:active {
+        color: var(--nightmix34);
+        transition: color 0.3s ease-in-out;
+    }
+    a[href]:hover {
+        color: var(--night4);
+    }
+
 }
 
 h1, h1 > a[id] {
-    color: light-dark( var(--day3), var(--night3) );
+    color: var(--day3);
+    /* color: light-dark( var(--day3), var(--night3) ); */
 }
 h2, h2 > a[id] {
-    color: light-dark( var(--day3), var(--night3) );
+    color: var(--day3);
+    /* color: light-dark( var(--day3), var(--night3) ); */
 }
 h3, h3 > a[id] {
-    color: light-dark( var(--day3), var(--night3) );
+    color: var(--day3);
+    /* color: light-dark( var(--day3), var(--night3) ); */
+}
+
+@media (prefers-color-scheme: dark) {
+    h1, h1 > a[id] {
+        color: var(--night3);
+    }
+    h2, h2 > a[id] {
+        color: var(--night3);
+    }
+    h3, h3 > a[id] {
+        color: var(--night3);
+    }   
 }
 
 hr {
-    border-color: light-dark( var(--day3), var(--night3) );
+    border-color: var(--day3);
+    /* border-color: light-dark( var(--day3), var(--night3) ); */
+}
+
+@media (prefers-color-scheme: dark) {
+    hr {
+        border-color: var(--night3);
+    }
 }
 
 figure {
     border-width: 1px;
     border-style: outset;
-    border-color: light-dark( var(--day3), var(--night3) );
+    border-color: var(--day3);
+    /* border-color: light-dark( var(--day3), var(--night3) ); */
     border-radius: 15px;
     padding: 5px;
     box-shadow: 5px 5px 5px var(--shadow);
@@ -92,7 +156,8 @@ figure {
 figure > img {
     border-width: 1px;
     border-style: inset;
-    border-color: light-dark( var(--day3), var(--night3) );
+    border-color: var(--day3);
+    /* border-color: light-dark( var(--day3), var(--night3) ); */
     border-radius: 15px;
     min-width: 200px;
     min-height: 200px;
@@ -101,8 +166,35 @@ figure > img {
 figure > figcaption {
     margin: 3px;
     text-align: center;
-    color: light-dark( var(--day3), var(--night3) );
-    
+    color: var(--day3);
+    /* color: light-dark( var(--day3), var(--night3) ); */    
+}
+
+@media (prefers-color-scheme: dark) {
+    figure {
+        border-width: 1px;
+        border-style: outset;
+        border-color: var(--night3);
+        border-radius: 15px;
+        padding: 5px;
+        box-shadow: 5px 5px 5px var(--shadow);
+    }
+
+    figure > img {
+        border-width: 1px;
+        border-style: inset;
+        border-color: var(--night3);
+        border-radius: 15px;
+        min-width: 200px;
+        min-height: 200px;
+    }
+
+    figure > figcaption {
+        margin: 3px;
+        text-align: center;
+        color: var(--night3);
+        
+    }
 }
 
 .sidebyside {
@@ -113,4 +205,105 @@ figure > figcaption {
     min-width: 400px;
 }
 
-/* TODO: Transition colors between link and hover with animation */
+header {
+    text-align: center;
+}
+
+header h1 {
+    text-shadow: 5px 5px 3px var(--shadow);
+}
+
+header h2 {
+    text-shadow: 5px 5px 3px var(--shadow);
+
+}
+
+nav {
+    display: flex;
+    /* min-width: 600px; */
+    justify-content: space-between;
+}
+
+#navlinks {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#navlinks ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+}
+
+#navlinks ul > li {
+    padding: 10px;
+}
+
+#themeswitcher {
+    display: flex;
+    justify-items: flex-end;
+}
+
+#theme-toggle {
+  position: relative;
+  appearance: none;
+  outline: none;
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  background: var(--day3);
+  box-shadow: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+  /* box-shadow: 5px 5px 3px var(--shadow); */
+}
+
+#theme-toggle:checked {
+  background: var(--night3);
+}
+
+#theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: inherit;
+  width: 36px;
+  height: 36px;
+  background: var(--day4);
+  transition: inherit;
+}
+
+#theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: calc(100% + 36px);
+  border-radius: inherit;
+  width: 36px;
+  height: 36px;
+  background: var(--day1);
+  transition: inherit;
+}
+
+ #theme-toggle:checked::before {
+  left: calc(100% - 38px);
+  background: var(--night4); /* crecent */
+}
+
+ #theme-toggle:checked::after {
+  right: 12px;
+  background: var(--night3); /* earth shadow */
+}
+
+main h1 {
+    text-shadow: 5px 5px 3px var(--shadow);
+}
+
+main h2 {
+    text-shadow: 5px 5px 3px var(--shadow);
+
+}

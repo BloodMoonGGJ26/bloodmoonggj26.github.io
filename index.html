@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TODO: Meta tags for keywords and description -->
+    <meta name="color-scheme" content="light dark">
     <title>Blood Moon: The Last Stand</title>
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
@@ -15,18 +16,20 @@
         <h2>The Last Stand</h2>
     </header>
     <nav>
-        <ul>
-            <li><a href="#about">About the game</a></li>
-            <li><a href="#screenshots">Screenshots</a></li>
-            <li><a href="#download">Download this game!</a></li>
-            <li>
-                <!-- TODO: align this item to the right -->
-                <!-- TODO: theme switcher (under construction) -->
-                <label for="theme">Day</label>
-                <input type="checkbox" name="theme">
-                <label for="theme">Night</label>
-            </li>
-        </ul>
+        <div id="navlinks">
+            <ul>
+                <li><a href="#about">About the game</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#download">Download this game!</a></li>
+            </ul>
+        </div>
+        <div id="themeswitcher">
+            <!-- TODO: align this item to the right -->
+            <!-- TODO: theme switcher (under construction) -->
+            <!-- label for="theme">Day</!-->
+            <input type="checkbox" id="theme-toggle" />
+            <!-- label for="theme">Night</!-->
+        </div>
     </nav>
     <main>
         <div>
