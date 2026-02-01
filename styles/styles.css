@@ -164,7 +164,7 @@ nav {
 
 #navlinks {
     display: flex;
-    justify-content: flex-start;
+    /*justify-content: flex-start;*/
 }
 
 #navlinks ul {
@@ -180,8 +180,11 @@ nav {
 }
 
 #themeswitcher {
+    margin-left: auto;
     display: flex;
-    justify-items: flex-end;
+    /* justify-items: flex-end; */
+    align-items: center;
+    position: relative;   /* needed for the absolute callout */
 }
 
 #theme-toggle {
@@ -257,4 +260,57 @@ html[data-theme="dark"] .daymode {
 
 html[data-theme="dark"] .nightmode {
     display: block;
+}
+
+@keyframes theme-wiggle {
+  0%   { transform: translateX(0) rotate(0deg); }
+  10%  { transform: translateX(-3px) rotate(-6deg); }
+  20%  { transform: translateX(3px)  rotate(6deg); }
+  30%  { transform: translateX(-4px) rotate(-8deg); }
+  40%  { transform: translateX(4px)  rotate(8deg); }
+  50%  { transform: translateX(-3px) rotate(-6deg); }
+  60%  { transform: translateX(3px)  rotate(6deg); }
+  70%  { transform: translateX(-2px) rotate(-4deg); }
+  80%  { transform: translateX(2px)  rotate(4deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+#theme-toggle.wiggle {
+  animation: theme-wiggle 0.75s ease-in-out;
+}
+
+#theme-hint {
+  position: absolute;
+  right: 100%;
+  margin-right: 10px;
+
+  z-index: 1000;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  font-size: 0.85rem;
+  white-space: nowrap;
+
+  background: var(--day4);
+  color: var(--day1);
+
+  box-shadow: 2px 2px 5px var(--shadow);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(-50%);
+  top: 50%;
+
+  transition: opacity 0.3s ease;
+}
+
+html[data-theme="dark"] #theme-hint {
+  background: var(--night4);
+  color: var(--night1);
+}
+
+#theme-hint.show {
+  opacity: 1;
 }

@@ -4,7 +4,9 @@
  */
 
 const storageKey = 'theme-preference';
+
 const themeToggle = document.querySelector('#theme-toggle');
+const themeHint   = document.querySelector('#theme-hint');
 
 const theme = {
   value: 'light'
@@ -15,8 +17,8 @@ function getColorPreference() {
   const stored = localStorage.getItem(storageKey);
   if (stored) return stored;
 
-  //return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  return 'light';       // We need this in light mode by default
+  // Default to light
+  return 'light';
 }
 
 // 2. Apply preference
@@ -24,7 +26,7 @@ function reflectPreference() {
   document.documentElement.setAttribute('data-theme', theme.value);
 
   if (themeToggle) {
-    themeToggle.checked = theme.value === 'dark'; // sync checkbox
+    themeToggle.checked = (theme.value === 'dark');
     themeToggle.setAttribute('aria-label', theme.value);
   }
 }
@@ -39,9 +41,31 @@ function setPreference() {
 function onToggleChange(e) {
   theme.value = e.currentTarget.checked ? 'dark' : 'light';
   setPreference();
+
+  if (themeHint) {
+    themeHint.classList.remove('show');
+  }
 }
 
-// 5. Init
+// 5. Attention / wiggle + callout
+function maybeDrawAttention() {
+  if (!themeToggle || !themeHint) return;
+
+  // Only if the user has never chosen a theme
+  if (localStorage.getItem(storageKey)) return;
+
+  setTimeout(() => {
+    themeToggle.classList.add('wiggle');
+    themeHint.classList.add('show');
+
+    themeToggle.addEventListener('animationend', () => {
+      themeToggle.classList.remove('wiggle');
+    }, { once: true });
+
+  }, 900);
+}
+
+// 6. Init
 theme.value = getColorPreference();
 reflectPreference();
 
@@ -49,14 +73,18 @@ if (themeToggle) {
   themeToggle.addEventListener('change', onToggleChange);
 }
 
-// 6. Listen to system changes
-window.matchMedia('(prefers-color-scheme: dark)')
-  .addEventListener('change', e => {
-    const isDark = e.matches;
-    // Only change if user has no saved preference
-    if (!localStorage.getItem(storageKey)) {
-      theme.value = isDark ? 'dark' : 'light';
-      reflectPreference();
-    }
-  });
+// 7. Sync with system changes (only if no saved preference)
+const media = window.matchMedia('(prefers-color-scheme: dark)');
 
+media.addEventListener('change', e => {
+  if (!localStorage.getItem(storageKey)) {
+    theme.value = e.matches ? 'dark' : 'light';
+    reflectPreference();
+  }
+});
+
+// 8. Run attention after load
+window.addEventListener('load', () => {
+  reflectPreference();
+  maybeDrawAttention();
+});
