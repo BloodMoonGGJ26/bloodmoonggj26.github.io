@@ -47,6 +47,24 @@
     }
 }
 
+html {
+    transition: 
+        --day1 0.6s ease,
+        --day2 0.6s ease,
+        --day3 0.6s ease,
+        --day4 0.6s ease,
+        --night1 0.6s ease,
+        --night2 0.6s ease,
+        --night3 0.6s ease,
+        --night4 0.6s ease,
+        --daymix23 0.6s ease,
+        --daymix34 0.6s ease,
+        --nightmix23 0.6s ease,
+        --nightmix34 0.6s ease,
+        --shadow 0.6s ease;
+}
+
+
 /* Explicit user override (JS writes html[data-theme]) */
 html[data-theme="light"] {
     --c-bg:       var(--day1);
@@ -78,11 +96,13 @@ body {
     background-color: var(--c-bg);
     color: var(--c-fg);
     font-family: Arial, Helvetica, sans-serif;
+    transition: background-color 0.6s ease, color 0.6s ease;
 }
 
 a {
     color: var(--c-fg);
     text-decoration: none;
+    transition: color 0.6s ease;
 }
 
 a[href]:link {
@@ -108,10 +128,12 @@ h1, h1 > a[id],
 h2, h2 > a[id],
 h3, h3 > a[id] {
     color: var(--c-accent1);
+    transition: color 0.6s ease;
 }
 
 hr {
     border-color: var(--c-accent1);
+    transition: border-color 0.6s ease;
 }
 
 figure {
@@ -121,6 +143,7 @@ figure {
     border-radius: 15px;
     padding: 5px;
     box-shadow: 5px 5px 5px var(--shadow);
+    transition: border-color 0.6s ease;
 }
 
 figure > img {
@@ -130,12 +153,14 @@ figure > img {
     border-radius: 15px;
     min-width: 200px;
     min-height: 200px;
+    transition: border-color 0.6s ease;
 }
 
 figure > figcaption {
     margin: 3px;
     text-align: center;
     color: var(--c-accent1);
+    transition: color 0.6s ease;
 }
 
 .sidebyside {
@@ -148,12 +173,22 @@ figure > figcaption {
 
 header {
     text-align: center;
+    /*background-image: url(../images/splash_art.png); */
+    background-image: linear-gradient(to top, rgb(from var(--c-bg) r g b / 0.3), rgb(from var(--c-fg) r g b / 0.3)), url('../images/splash_art.png');
+    background-position: center;
+    min-height: 700px;
+    background-repeat: no-repeat;
 }
 
 header h1,
 header h2 {
     text-shadow: 5px 5px 3px var(--shadow);
 
+}
+
+header img {
+    /* TODO: glow? */
+    filter: drop-shadow(0 0 0.75rem var(--c-accent2));
 }
 
 nav {

@@ -13,14 +13,17 @@
     <header>
         <!-- TODO: Find some spooky font or a header image -->
         <!-- TODO: Make it two headers! -->
-        <h1>Blood Moon</h1>
-        <h2>The Last Stand</h2>
+        <!--h1>Blood Moon</h1-->
+        <!--h2>The Last Stand</h2-->
+        <img src="./images/game_logo.png" alt="Blood Moon: The Last Stand" width="100%">
     </header>
     <nav>
         <div id="navlinks">
             <ul>
                 <li><a href="#about">About the game</a></li>
+                <li><a href="#characters">Characters</a></li>
                 <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#creators">The Creators</a></li>
                 <li><a href="#download">Download this game!</a></li>
             </ul>
         </div>
@@ -32,38 +35,52 @@
     <main>
         <div>
             <h1><a id="about">About the game</a></h1>
-            <div id="gameplay">
-                <!-- TODO: Describe the game -->
-            </div>
-            <hr/>
-            <div class="sidebyside" id="protagonist">
-                <!-- TODO: Add a figure to one side. When the theme switches, so does the image in the figure, which is that of our protagonist -->
+            <p>Defend the city from the monsters that show up at night while protecting your own secret.</p>
+        </div>
+        <hr/>
+        <div>
+            <h1><a id="characters">Characters</a></h1>
+            <div id="protagonist" class="sidebyside">
                 <figure class="daymode">
-                    <!-- TODO: This figure should appear in day mode -->
-                    <img src="" alt="The hero?">
+                    <img src="./images/hero_left.png" alt="The hero?" width="100" height="100">
                     <figcaption>The hero?</figcaption>
                 </figure>
                 <div class="sidepara">
                     <h2>Hero or Monster?</h2>
                     <!-- TODO: Describe the protagonist -->
-                    <p>Coming Soon</p>
+                    <p>Are you the hero or are you a monster? Beneath the mask lies your secret that must be protected.  Would the village accept you or would they reject you?</p>
                 </div>
                 <figure class="nightmode">
                     <!-- TODO: Thsi figure should appear in night mode -->
-                    <img src="" alt="The monster?">
+                    <img src="./images/monster_right.png" alt="The monster?"  width="100" height="100">
                     <figcaption>The monster?</figcaption>
                 </figure>
             </div>
             <hr />
-            <div id="townies" class="daymode">
-                <!-- TODO: In day mode, talk of the townies -->
-                <h2>The Townies</h2>
-                <p>Coming Soon</p>
+            <div id="townies" class="daymode sidebyside">
+                <div class="sidebyside">
+                    <div class="sidepara">
+                        <h2>The Townies</h2>
+                        <p>Protect the townspeople from the real monsters that lurk beyound the village. They can't know your secret.</p>
+                    </div>
+                    <figure>
+                        <img src="./images/townie.png" alt="The hero?" width="100" height="100">
+                        <figcaption>The Townies</figcaption>
+                    </figure>
+                </div>
             </div>
-            <div id="villans" class="nightmode">
-                <!-- TODO: In night mode, talk of the villans -->
-                <h2>The Villains</h2>
-                <p>Coming Soon</p>
+            <div id="villans" class="nightmode sidebyside">
+                <div class="sidebyside">
+                    <figure>
+                        <!-- TODO: This figure should appear in day mode -->
+                        <img src="./images/villain.png" alt="The Villains" width="100" height="100">
+                        <figcaption>The Villains</figcaption>
+                    </figure>
+                    <div class="sidepara">
+                        <h2>The Villans</h2>
+                        <p>These creeps are hungry for blood. You must stop them. If anyone found out who you were, the village would be doomed.</p>
+                    </div>
+                </div>
             </div>
         </div>
         <hr>
@@ -72,7 +89,19 @@
             <!-- TODO: a carocel (sp) of screen shots -->
             <p>Coming soon</p>
         </div>
-        <hr>
+        <hr />
+        <div>
+            <h1 id="creators">The Creators</h1>
+            <ul>
+                <li><strong>Jason Charney</strong> (<a href="https://github.com/jrcharney" title="Github">Github</a>, <a href="https://bsky.app/profile/jrcharney.bsky.social" title="BlueSky">BlueSky</a>) - Lead Developer, Web Developer</li>
+                <li><strong>Jeremy Ringkamp</strong> (<a href="https://github.com/jringkamp" title="Github">Github</a>) - Lead Developer</li>
+                <li><strong>Xian Russell</strong> (<a href="https://bsky.app/profile/xainrussell.bsky.social" title="BlueSky">BlueSky</a>  - Art and character design</li>
+                <li><strong>Cherryisu</strong> (<a href="https://github.com/Cherryisuu" title="Github">Github</a>, <a href="https://www.youtube.com/channel/UCKKRnCwLjRGSE5WAmPIo0cw" title="YouTube">YouTube</a>) - Music and SFX, Code Assitant</li>
+                <li><strong>Damian</strong> - Writer</li>
+                <li><strong>Noel Adrian</strong> (<a href="https://github.com/noeladrian5" title="Github">Github</a>) - Playtester</li>
+            </ul>
+        </div>
+        <hr />
         <div>
             <h1><a id="download">Download the game!</a></h1>
             <ul>
